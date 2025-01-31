@@ -5,7 +5,7 @@
 ## **主題**
 
 透過點擊圖片，展開不同背景圖片樣式
-[[DEMO]](https://50-project-react.vercel.app/ExpandingCards)
+[[DEMO]](https://64864a83.50projectreact.pages.dev/ExpandingCards)
 
 ## **步驟**
 
