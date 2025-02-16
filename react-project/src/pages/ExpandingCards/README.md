@@ -90,7 +90,7 @@ className={`relative flex-1 m-2 h-[80vh] rounded-2xl bg-cover bg-center bg-no-re
 - flex-[5]：當 activeIndex === index 時，該卡片變大。
 - flex-[0.5]：未選中的卡片縮小。
 
-4. 探索: 新增功能
+## **探索: 新增功能**
 
 - 自動輪播功能 (Auto-Slideshow)：每隔幾秒自動切換到下一張卡片。
 
