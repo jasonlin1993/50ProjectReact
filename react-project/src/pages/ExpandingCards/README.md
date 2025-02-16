@@ -4,32 +4,44 @@
 
 ## **主題**
 
-透過點擊圖片，展開不同背景圖片樣式
+這段程式碼實現了一個**展開式卡片（Expanding Cards）**的 UI 組件。它展示了一組圖片，每張圖片作為一個「卡片」，當點擊某張卡片時，它會展開變大，其他卡片會縮小。這種交互式動畫通常用於圖片展示或 UI 設計展示。
 [[DEMO]](https://64864a83.50projectreact.pages.dev/ExpandingCards)
 
 ## **步驟**
 
-#### Step1. 建立圖片以及名稱物件
+#### Step1. 定義圖片資料(panelsData)
 
-先將圖片資料以及名稱用`物件 (Object)`方式寫。
-每個物件包含了 `title` 與 `image` 屬性。
-程式碼透過 `const` 宣告一個不可變常數變數`panelsData`，並同時直接給它賦予「陣列物件」的值。
+- 這是一個包含圖片和標題的陣列，每個物件 `({ title, image })` 代表一張卡片的內容。
 
-語法結構可以分成:
+#### Step2. 建立 React 組件 (ExpandingCards)
 
-1. 陣列: 用 `[ ]` 建立陣列。
-2. 物件: 用 `{ }` 表示一個物件。裡面是 `key:value` 配對的形式。
+- 使用 `useState(0)` 來追蹤當前被點選的卡片索引 (`activeIndex`)。
+- 回傳一個 `div` 容器，作為所有卡片的父元素。
 
-#### Step2. 新增 useState 狀態管理
+#### Step3. 遍歷 panelsData 並渲染卡片
 
-1. `activeIndex`: 紀錄目前被點擊、擴展的卡片索引。預設為 `0`，也就是第 1 張卡片。
-2. `setActiveIndex`: 用來更新 `activeIndex`。
-3. 點擊事件: 點擊卡片時，會將 `activeIndex` 更新為該卡片的索引。
-   ```js
-   onClick={() => setActiveIndex(index)}
-   ```
+- `map()` 遍歷 `panelsData`，為每張圖片生成一個 `div`。
+- 設定 `key={index}` 來確保每個 `div` 都有唯一的 key。
 
-#### Step3. 互動動畫
+#### Step4. 動態樣式調整
 
-1. 當 `activeIndex` 等於當前 `index` 時，卡片的 `flex` 值變為 `5` (佔更大寬度)，否則變為 `0.5`(縮小)。
-2. `transition-opacity duration-300 ease-in-out`: 當 activeIndex 等於目前索引時，標題淡入 (`opacity-100`)，否則淡出(`opacity-0`)。
+- `className` 內部使用三元運算子 (`activeIndex === index ? "flex-[5]" : "flex-[0.5]"`)
+  - 被點擊的卡片會變大（`flex-[5]`）。
+  - 其他未選中的卡片會縮小（`flex-[0.5]`）。
+- `backgroundImage` 設定圖片背景。
+
+#### Step5. 點擊事件 (onClick)
+
+- 當使用者點擊卡片時，透過 `setActiveIndex(index)` 更新 `activeIndex`，使被點擊的卡片變大。
+
+#### Step6. 標題顯示與動畫
+
+- 標題 (`h3`) 只有當卡片被點選時才會顯示 (`opacity-100`)，未選擇時則隱藏 (`opacity-0`)。
+
+## **程式碼撰寫的 React / JSX 語法&備註**
+
+1. `useState` 的使用
+
+```js
+const [activeIndex, setActiveIndex] = useState(0);
+```
