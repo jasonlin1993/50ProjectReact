@@ -50,6 +50,8 @@ const [activeIndex, setActiveIndex] = useState(0);
 - `useState(0)`：定義 `activeIndex`，初始值為 `0`（第一張卡片展開）。
 - `setActiveIndex(index)`：當使用者點擊卡片時，`activeIndex` 會更新，重新渲染畫面。
 
+> 參閱：[React Dev - useState](https://react.dev/reference/react/useState)
+
 2. 透過 `.map()` 動態渲染
 
 ```jsx
@@ -78,6 +80,8 @@ const [activeIndex, setActiveIndex] = useState(0);
 - 使用 `.map()` 遍歷 `panelsData` 陣列，動態生成 `<div>` 元素。 -`className` 內使用 條件判斷 (`activeIndex === index ? " flex-[5]" : "flex-[0.5]"`)，來控制展開效果。
 - `onClick={() => setActiveIndex(index)}`：點擊時更新 `activeIndex`，讓該卡片變大。
 
+> 參閱：[MDN-Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
 3. Tailwind CSS 的 `className` 條件設定
 
 ```jsx
@@ -89,6 +93,8 @@ className={`relative flex-1 m-2 h-[80vh] rounded-2xl bg-cover bg-center bg-no-re
 
 - flex-[5]：當 activeIndex === index 時，該卡片變大。
 - flex-[0.5]：未選中的卡片縮小。
+
+> 參閱：[React Dev - Adding styles](https://react.dev/learn#adding-styles)
 
 ## **探索: 新增功能**
 
@@ -119,3 +125,5 @@ export default function ExpandingCards() {
   - 透過 `setInterval` 每 3 秒執行一次 `setActiveIndex`，讓 `activeIndex` 變成下一個索引值。
   - 當 `activeIndex` 達到最後一張時，重新回到第一張 `(prevIndex + 1) % panelsData.length`。
   - 使用 `clearInterval` 來清除計時器，避免記憶體洩漏。
+
+> 參閱：[React Dev - useEffect](https://react.dev/reference/react/useEffect)
