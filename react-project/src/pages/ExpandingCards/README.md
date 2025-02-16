@@ -19,3 +19,17 @@
 
 1. 陣列: 用 `[ ]` 建立陣列。
 2. 物件: 用 `{ }` 表示一個物件。裡面是 `key:value` 配對的形式。
+
+#### Step2. 新增 useState 狀態管理
+
+1. `activeIndex`: 紀錄目前被點擊、擴展的卡片索引。預設為 `0`，也就是第 1 張卡片。
+2. `setActiveIndex`: 用來更新 `activeIndex`。
+3. 點擊事件: 點擊卡片時，會將 `activeIndex` 更新為該卡片的索引。
+   ```js
+   onClick={() => setActiveIndex(index)}
+   ```
+
+#### Step3. 互動動畫
+
+1. 當 `activeIndex` 等於當前 `index` 時，卡片的 `flex` 值變為 `5` (佔更大寬度)，否則變為 `0.5`(縮小)。
+2. `transition-opacity duration-300 ease-in-out`: 當 activeIndex 等於目前索引時，標題淡入 (`opacity-100`)，否則淡出(`opacity-0`)。
